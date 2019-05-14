@@ -15,6 +15,8 @@
 		25E58F27228B1C8300112ACA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F26228B1C8300112ACA /* main.m */; };
 		25E58F31228B1C8400112ACA /* Every_DoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F30228B1C8400112ACA /* Every_DoTests.m */; };
 		25E58F3C228B1C8400112ACA /* Every_DoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F3B228B1C8400112ACA /* Every_DoUITests.m */; };
+		25E58F4B228B1DD900112ACA /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F4A228B1DD900112ACA /* Todo.m */; };
+		25E58F4E228B203B00112ACA /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F4D228B203B00112ACA /* TodoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		25E58F37228B1C8400112ACA /* Every_DoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Every_DoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E58F3B228B1C8400112ACA /* Every_DoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Every_DoUITests.m; sourceTree = "<group>"; };
 		25E58F3D228B1C8400112ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25E58F49228B1DD900112ACA /* Todo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Todo.h; sourceTree = "<group>"; };
+		25E58F4A228B1DD900112ACA /* Todo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
+		25E58F4C228B203B00112ACA /* TodoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewController.h; sourceTree = "<group>"; };
+		25E58F4D228B203B00112ACA /* TodoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +110,12 @@
 				25E58F17228B1C8300112ACA /* AppDelegate.h */,
 				25E58F18228B1C8300112ACA /* AppDelegate.m */,
 				25E58F1A228B1C8300112ACA /* ViewController.h */,
+				25E58F49228B1DD900112ACA /* Todo.h */,
+				25E58F4A228B1DD900112ACA /* Todo.m */,
 				25E58F1B228B1C8300112ACA /* ViewController.m */,
 				25E58F1D228B1C8300112ACA /* Main.storyboard */,
+				25E58F4C228B203B00112ACA /* TodoTableViewController.h */,
+				25E58F4D228B203B00112ACA /* TodoTableViewController.m */,
 				25E58F20228B1C8300112ACA /* Assets.xcassets */,
 				25E58F22228B1C8300112ACA /* LaunchScreen.storyboard */,
 				25E58F25228B1C8300112ACA /* Info.plist */,
@@ -265,6 +275,8 @@
 				25E58F1C228B1C8300112ACA /* ViewController.m in Sources */,
 				25E58F27228B1C8300112ACA /* main.m in Sources */,
 				25E58F19228B1C8300112ACA /* AppDelegate.m in Sources */,
+				25E58F4E228B203B00112ACA /* TodoTableViewController.m in Sources */,
+				25E58F4B228B1DD900112ACA /* Todo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
