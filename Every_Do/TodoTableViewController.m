@@ -9,11 +9,12 @@
 #import "TodoTableViewController.h"
 #import "Todo.h"
 #import "TodoTableViewCell.h"
-@interface TodoTableViewController ()
+#import "TodoDetailViewController.h"
+@interface TodoTableViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray<Todo*>* todoArray;
 
 @property (nonatomic) TodoTableViewCell *todoCell;
-
+@property (nonatomic, strong) Todo * selectedTodo;
 
 @end
 
@@ -119,14 +120,23 @@
 }
 */
 
-/*
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString: @"detailSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        self.selectedTodo = self.todoArray[indexPath.row];
+        TodoDetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.todo = self.selectedTodo;
+    }
+
 }
-*/
+
+
+#pragma mark - UITableViewDelegate Methods
+
 
 @end
