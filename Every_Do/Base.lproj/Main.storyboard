@@ -9,22 +9,55 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Todo Table View Controller-->
         <scene sceneID="hP2-Pr-i5h">
             <objects>
-                <tableViewController id="VXI-il-pea" sceneMemberID="viewController">
+                <tableViewController id="VXI-il-pea" customClass="TodoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JRX-Us-x6V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Es1-WE-BxV">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="todoCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" rowHeight="68" id="Es1-WE-BxV" customClass="TodoTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Es1-WE-BxV" id="g8Z-MB-UBg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hqx-gD-Hmq">
+                                            <rect key="frame" x="20" y="18.5" width="51" height="31"/>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-Ph-lev">
+                                            <rect key="frame" x="77" y="23.5" width="60" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="aIB-45-7hz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="Do shopping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74b-Ha-OB6">
+                                            <rect key="frame" x="156" y="21" width="238" height="26"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="c4a-Ph-lev" firstAttribute="leading" secondItem="hqx-gD-Hmq" secondAttribute="trailing" constant="8" id="62F-QG-vJ5"/>
+                                        <constraint firstItem="hqx-gD-Hmq" firstAttribute="centerY" secondItem="g8Z-MB-UBg" secondAttribute="centerY" id="8X8-F5-Xzl"/>
+                                        <constraint firstItem="c4a-Ph-lev" firstAttribute="centerY" secondItem="g8Z-MB-UBg" secondAttribute="centerY" id="DvS-hR-0fL"/>
+                                        <constraint firstItem="hqx-gD-Hmq" firstAttribute="leading" secondItem="g8Z-MB-UBg" secondAttribute="leadingMargin" id="Gto-au-46k"/>
+                                        <constraint firstItem="74b-Ha-OB6" firstAttribute="leading" secondItem="c4a-Ph-lev" secondAttribute="trailing" constant="19" id="HZH-Jp-mrE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="74b-Ha-OB6" secondAttribute="trailing" priority="998" id="hcm-5J-DkR"/>
+                                        <constraint firstItem="74b-Ha-OB6" firstAttribute="centerY" secondItem="g8Z-MB-UBg" secondAttribute="centerY" id="hiu-jW-dH5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="doneSwitch" destination="hqx-gD-Hmq" id="XRU-ZZ-LRa"/>
+                                    <outlet property="taskLabel" destination="74b-Ha-OB6" id="fwy-4J-tPl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,7 +69,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9f0-Vc-2Cj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1100" y="118"/>
+            <point key="canvasLocation" x="1257.9710144927537" y="69.642857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cSN-Gi-i2W">

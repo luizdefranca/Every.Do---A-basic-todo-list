@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		25E58F19228B1C8300112ACA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F18228B1C8300112ACA /* AppDelegate.m */; };
-		25E58F1C228B1C8300112ACA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F1B228B1C8300112ACA /* ViewController.m */; };
 		25E58F1F228B1C8300112ACA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E58F1D228B1C8300112ACA /* Main.storyboard */; };
 		25E58F21228B1C8300112ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25E58F20228B1C8300112ACA /* Assets.xcassets */; };
 		25E58F24228B1C8300112ACA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E58F22228B1C8300112ACA /* LaunchScreen.storyboard */; };
@@ -17,6 +16,7 @@
 		25E58F3C228B1C8400112ACA /* Every_DoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F3B228B1C8400112ACA /* Every_DoUITests.m */; };
 		25E58F4B228B1DD900112ACA /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F4A228B1DD900112ACA /* Todo.m */; };
 		25E58F4E228B203B00112ACA /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F4D228B203B00112ACA /* TodoTableViewController.m */; };
+		25E58F51228B35CC00112ACA /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E58F50228B35CC00112ACA /* TodoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,6 @@
 		25E58F14228B1C8300112ACA /* Every_Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Every_Do.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E58F17228B1C8300112ACA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		25E58F18228B1C8300112ACA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		25E58F1A228B1C8300112ACA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		25E58F1B228B1C8300112ACA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		25E58F1E228B1C8300112ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25E58F20228B1C8300112ACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E58F23228B1C8300112ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +55,8 @@
 		25E58F4A228B1DD900112ACA /* Todo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
 		25E58F4C228B203B00112ACA /* TodoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewController.h; sourceTree = "<group>"; };
 		25E58F4D228B203B00112ACA /* TodoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewController.m; sourceTree = "<group>"; };
+		25E58F4F228B35CC00112ACA /* TodoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
+		25E58F50228B35CC00112ACA /* TodoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +109,11 @@
 			children = (
 				25E58F17228B1C8300112ACA /* AppDelegate.h */,
 				25E58F18228B1C8300112ACA /* AppDelegate.m */,
-				25E58F1A228B1C8300112ACA /* ViewController.h */,
 				25E58F49228B1DD900112ACA /* Todo.h */,
 				25E58F4A228B1DD900112ACA /* Todo.m */,
-				25E58F1B228B1C8300112ACA /* ViewController.m */,
 				25E58F1D228B1C8300112ACA /* Main.storyboard */,
+				25E58F4F228B35CC00112ACA /* TodoTableViewCell.h */,
+				25E58F50228B35CC00112ACA /* TodoTableViewCell.m */,
 				25E58F4C228B203B00112ACA /* TodoTableViewController.h */,
 				25E58F4D228B203B00112ACA /* TodoTableViewController.m */,
 				25E58F20228B1C8300112ACA /* Assets.xcassets */,
@@ -272,9 +272,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25E58F1C228B1C8300112ACA /* ViewController.m in Sources */,
 				25E58F27228B1C8300112ACA /* main.m in Sources */,
 				25E58F19228B1C8300112ACA /* AppDelegate.m in Sources */,
+				25E58F51228B35CC00112ACA /* TodoTableViewCell.m in Sources */,
 				25E58F4E228B203B00112ACA /* TodoTableViewController.m in Sources */,
 				25E58F4B228B1DD900112ACA /* Todo.m in Sources */,
 			);

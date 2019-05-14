@@ -8,8 +8,13 @@
 
 #import "TodoTableViewController.h"
 #import "Todo.h"
+#import "TodoTableViewCell.h"
 @interface TodoTableViewController ()
 @property (nonatomic, strong) NSMutableArray<Todo*>* todoArray;
+
+@property (nonatomic) TodoTableViewCell *todoCell;
+
+
 @end
 
 @implementation TodoTableViewController
@@ -22,33 +27,63 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    [self configTodoArray];
 }
 
+
 -(void) configTodoArray {
+    self.todoArray = [NSMutableArray array];
+
+    Todo *drinkWater = [Todo new];
+    drinkWater.task = @"Drink water";
+    drinkWater.completed = NO;
+    drinkWater.priority = @1;
+    drinkWater.taskDescription = @"Drink a cup of water each hour";
+    [self.todoArray addObject: drinkWater];
+
+    Todo *checkEmail = [Todo new];
+    checkEmail.task = @"Check email";
+    checkEmail.completed = YES;
+    checkEmail.priority = @1;
+    checkEmail.taskDescription = @"Check the email on the morning";
+    [self.todoArray addObject: checkEmail];
+
+    Todo *doShopping = [Todo new];
+    doShopping.task = @"Do shopping";
+    checkEmail.completed = NO;
+    doShopping.priority = @3;
+    doShopping.taskDescription = @"Do shopping on Saturday morning";
+    [self.todoArray addObject: doShopping];
     
+
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return self.todoArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+     self.todoCell  = [tableView dequeueReusableCellWithIdentifier:@"todoCell" forIndexPath:indexPath];
+
+    NSInteger row = indexPath.row;
+
+    Todo *todo = self.todoArray[row];
+    [self.todoCell.doneSwitch setOn: todo.completed];
+    self.todoCell.taskLabel.text = todo.task;
+
+    return self.todoCell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
