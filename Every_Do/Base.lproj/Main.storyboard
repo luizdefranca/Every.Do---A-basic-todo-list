@@ -13,7 +13,7 @@
         <!--Todo List-->
         <scene sceneID="hP2-Pr-i5h">
             <objects>
-                <tableViewController id="VXI-il-pea" customClass="TodoTableViewController" sceneMemberID="viewController">
+                <tableViewController id="VXI-il-pea" customClass="TodoViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JRX-Us-x6V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,6 +28,9 @@
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hqx-gD-Hmq">
                                             <rect key="frame" x="20" y="18.5" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="completeTodo:" destination="VXI-il-pea" eventType="valueChanged" id="uRU-mK-3Lc"/>
+                                            </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="Do shopping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74b-Ha-OB6">
                                             <rect key="frame" x="89" y="21" width="279" height="26"/>
@@ -68,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="1257.9710144927537" y="69.642857142857139"/>
         </scene>
-        <!--Todo Detail View Controller-->
+        <!--Title-->
         <scene sceneID="GHE-Ao-tuq">
             <objects>
                 <viewController id="JzX-fa-0Xo" customClass="TodoDetailViewController" sceneMemberID="viewController">
@@ -112,7 +115,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Uup-18-Ngq"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -132,20 +134,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I3w-nR-Tdn"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Q7q-Bv-2jb"/>
                     <connections>
                         <outlet property="priorityLabel" destination="tI3-6Y-NZE" id="TWa-eQ-URU"/>
                         <outlet property="priorityStepper" destination="HIj-UE-Jje" id="5dZ-fu-bGg"/>
                         <outlet property="taskDescriptionTextView" destination="W9T-bc-PL4" id="oq4-sI-FQg"/>
+                        <outlet property="titleNavigationBar" destination="Q7q-Bv-2jb" id="tzd-eD-CC8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdB-Dl-fxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2360.8695652173915" y="55.580357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="JAN-1O-gAg">
             <objects>
-                <viewController id="VT6-p8-m5w" sceneMemberID="viewController">
+                <viewController id="VT6-p8-m5w" customClass="AddViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WlU-Xu-cIO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,10 +161,91 @@
                                     <navigationItem id="8kD-Jz-2mI"/>
                                 </items>
                             </navigationBar>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="mxy-Yl-Cs3">
+                                <rect key="frame" x="236" y="263" width="94" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="dAR-Tu-RdB"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changePriority:" destination="VT6-p8-m5w" eventType="valueChanged" id="JuD-b1-SYn"/>
+                                    <action selector="changePriority:" destination="JzX-fa-0Xo" eventType="valueChanged" id="TtN-Wj-Afj"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bED-jT-DbJ">
+                                <rect key="frame" x="81" y="265" width="70" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClV-hl-rgP">
+                                <rect key="frame" x="216" y="261.5" width="12" height="32.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WRF-Ry-FPf">
+                                <rect key="frame" x="20" y="314" width="374" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="fFb-Gx-Hwv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want todo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmG-CA-Sb7">
+                                <rect key="frame" x="20" y="172" width="183" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lTT-Vn-YDx">
+                                <rect key="frame" x="8" y="201" width="398" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WRF-Ry-FPf" firstAttribute="top" secondItem="ClV-hl-rgP" secondAttribute="bottom" constant="20" id="3n2-JR-W6Z"/>
+                            <constraint firstItem="3Of-GF-dQG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qmG-CA-Sb7" secondAttribute="trailing" symbolic="YES" id="5X0-9l-Oha"/>
+                            <constraint firstItem="WRF-Ry-FPf" firstAttribute="leading" secondItem="3Of-GF-dQG" secondAttribute="leading" constant="20" id="AT4-40-kmu"/>
+                            <constraint firstItem="qmG-CA-Sb7" firstAttribute="leading" secondItem="3Of-GF-dQG" secondAttribute="leading" constant="20" id="BxT-e0-EdK"/>
+                            <constraint firstItem="mxy-Yl-Cs3" firstAttribute="leading" secondItem="ClV-hl-rgP" secondAttribute="trailing" constant="8" id="Ecn-1J-y2C"/>
+                            <constraint firstItem="lTT-Vn-YDx" firstAttribute="leading" secondItem="3Of-GF-dQG" secondAttribute="leading" constant="8" id="Gr6-9B-2vS"/>
+                            <constraint firstItem="3Of-GF-dQG" firstAttribute="trailing" secondItem="lTT-Vn-YDx" secondAttribute="trailing" constant="8" id="VZf-KN-g6c"/>
+                            <constraint firstItem="3Of-GF-dQG" firstAttribute="trailing" secondItem="mxy-Yl-Cs3" secondAttribute="trailing" constant="84" id="WN2-wu-Ibe"/>
+                            <constraint firstItem="bED-jT-DbJ" firstAttribute="leading" secondItem="3Of-GF-dQG" secondAttribute="leading" constant="81" id="Xui-Zr-nGp"/>
+                            <constraint firstItem="mxy-Yl-Cs3" firstAttribute="top" secondItem="lTT-Vn-YDx" secondAttribute="bottom" constant="32" id="bx7-bs-TMW"/>
+                            <constraint firstItem="lTT-Vn-YDx" firstAttribute="top" secondItem="qmG-CA-Sb7" secondAttribute="bottom" constant="8" id="f2d-zf-YZT"/>
+                            <constraint firstItem="3Of-GF-dQG" firstAttribute="trailing" secondItem="WRF-Ry-FPf" secondAttribute="trailing" constant="20" id="fWk-NV-dfw"/>
+                            <constraint firstItem="ClV-hl-rgP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bED-jT-DbJ" secondAttribute="trailing" constant="8" symbolic="YES" id="jhF-vX-IUm"/>
+                            <constraint firstItem="qmG-CA-Sb7" firstAttribute="top" secondItem="3Of-GF-dQG" secondAttribute="top" constant="32" id="nEF-J9-3ia"/>
+                            <constraint firstItem="ClV-hl-rgP" firstAttribute="centerY" secondItem="mxy-Yl-Cs3" secondAttribute="centerY" id="qzB-2M-9GF"/>
+                            <constraint firstItem="bED-jT-DbJ" firstAttribute="centerY" secondItem="ClV-hl-rgP" secondAttribute="centerY" id="wLH-1a-DuL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3Of-GF-dQG"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="ywI-eW-T1E">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Gm9-LV-Stx">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3a4-l3-vIB" userLabel="Save Bar Button">
+                                <rect key="frame" x="302" y="3" width="92" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveTodo:" destination="VT6-p8-m5w" eventType="touchUpInside" id="PlO-gM-ra6"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="WRF-Ry-FPf" id="LIH-TW-OkD"/>
+                        <outlet property="priorityLabel" destination="ClV-hl-rgP" id="RJF-WA-eNY"/>
+                        <outlet property="priorityStepper" destination="mxy-Yl-Cs3" id="6cb-nW-oUx"/>
+                        <outlet property="taskTextField" destination="lTT-Vn-YDx" id="5sY-WZ-KU6"/>
+                        <outlet property="titleNavigationBar" destination="ywI-eW-T1E" id="YKm-KS-D9r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QF0-Un-xr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddViewController.h"
+#import "TodoDetailViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TodoTableViewController : UITableViewController
+
+@interface TodoViewController : UITableViewController<ChangeTodoDelegate>
 
 @end
 

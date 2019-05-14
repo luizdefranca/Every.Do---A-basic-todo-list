@@ -6,11 +6,18 @@
 //  Copyright © 2019 Luiz. All rights reserved.
 //
 
-#import "TodoTableViewController.h"
+
+
+
+
+
+#import "TodoViewController.h"
 #import "Todo.h"
 #import "TodoTableViewCell.h"
 #import "TodoDetailViewController.h"
-@interface TodoTableViewController ()<UITableViewDelegate>
+
+
+@interface TodoViewController ()<UITableViewDelegate, ChangeTodoDelegate>
 @property (nonatomic, strong) NSMutableArray<Todo*>* todoArray;
 
 @property (nonatomic) TodoTableViewCell *todoCell;
@@ -18,7 +25,7 @@
 
 @end
 
-@implementation TodoTableViewController
+@implementation TodoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +39,10 @@
     [self configTodoArray];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+
+    NSLog(@"VALUE IS : %@", self.todoArray[0]. completed ? @"YES" : @"NO");
+}
 
 -(void) configTodoArray {
     self.todoArray = [NSMutableArray array];
@@ -85,41 +96,11 @@
     return self.todoCell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - Delegate Methods
+-(void) addTodo: (Todo*) todo{
+    [self.todoArray addObject: todo];
+    [self.tableView reloadData];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 
 #pragma mark - Navigation
@@ -130,13 +111,21 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         self.selectedTodo = self.todoArray[indexPath.row];
         TodoDetailViewController *detailViewController = [segue destinationViewController];
-        detailViewController.todo = self.selectedTodo;
-    }
 
+        detailViewController.todo = self.selectedTodo;
+    } else if([segue.identifier isEqualToString: @"addSegue"]){
+        AddViewController * addViewController = [segue destinationViewController];
+        addViewController.delegate = self;
+    }
+       NSLog(@"VALUE IS : %@", self.todoArray[0]. completed ? @"YES" : @"NO");
 }
 
-
-#pragma mark - UITableViewDelegate Methods
+- (IBAction)completeTodo:(UISwitch *)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    self.selectedTodo = self.todoArray[indexPath.row];
+    self.selectedTodo.completed = YES;
+     [self.tableView reloadData];
+}
 
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "TodoTableViewCell.h"
+@protocol TodoTableViewCellDelegate
 
+@end
 
 @implementation TodoTableViewCell
 

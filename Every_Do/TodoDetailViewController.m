@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *priorityStepper;
 @property (weak, nonatomic) IBOutlet UITextView *taskDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationBar;
 
 
 @end
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 
 }
 
@@ -37,6 +38,7 @@
     self.priorityLabel.text = [self.todo.priority stringValue];
 
     self.taskDescriptionTextView.text = self.todo.taskDescription;
+    self.titleNavigationBar.title = self.todo.task;
 }
 
 - (IBAction)changePriority:(UIStepper *)sender {
@@ -45,15 +47,5 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
