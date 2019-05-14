@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo Table View Controller-->
+        <!--Todo List-->
         <scene sceneID="hP2-Pr-i5h">
             <objects>
                 <tableViewController id="VXI-il-pea" customClass="TodoTableViewController" sceneMemberID="viewController">
@@ -18,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="todoCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" rowHeight="68" id="Es1-WE-BxV" customClass="TodoTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="todoCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="todoCell" rowHeight="68" id="Es1-WE-BxV" customClass="TodoTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Es1-WE-BxV" id="g8Z-MB-UBg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hqx-gD-Hmq">
@@ -31,14 +32,17 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-Ph-lev">
                                             <rect key="frame" x="77" y="23.5" width="60" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="aIB-45-7hz"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="aIB-45-7hz"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="Do shopping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74b-Ha-OB6">
-                                            <rect key="frame" x="156" y="21" width="238" height="26"/>
+                                            <rect key="frame" x="156" y="21" width="212" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="212" id="QUg-Ll-5Ma"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -57,6 +61,7 @@
                                 <connections>
                                     <outlet property="doneSwitch" destination="hqx-gD-Hmq" id="XRU-ZZ-LRa"/>
                                     <outlet property="taskLabel" destination="74b-Ha-OB6" id="fwy-4J-tPl"/>
+                                    <segue destination="JzX-fa-0Xo" kind="show" id="5E3-DF-621"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -65,19 +70,75 @@
                             <outlet property="delegate" destination="VXI-il-pea" id="Vcv-rY-v7E"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="vgz-Aq-nor"/>
+                    <navigationItem key="navigationItem" title="Todo List" id="vgz-Aq-nor">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wGq-7m-Q5W">
+                            <connections>
+                                <segue destination="VT6-p8-m5w" kind="show" id="MFT-Q3-vN9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9f0-Vc-2Cj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1257.9710144927537" y="69.642857142857139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GHE-Ao-tuq">
+            <objects>
+                <viewController id="JzX-fa-0Xo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hgu-8T-6fY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6oZ-VU-jqL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="a9c-ja-wlz">
+                                        <barButtonItem key="backBarButtonItem" title="Done" id="y3M-L0-PN7"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="I3w-nR-Tdn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdB-Dl-fxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="56"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JAN-1O-gAg">
+            <objects>
+                <viewController id="VT6-p8-m5w" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WlU-Xu-cIO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1np-fr-fer">
+                                <rect key="frame" x="0.0" y="-8" width="414" height="96"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="8kD-Jz-2mI"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="3Of-GF-dQG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QF0-Un-xr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2361" y="881"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cSN-Gi-i2W">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gi2-cm-Bjg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eoM-kE-PF5">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="eoM-kE-PF5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
